@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:InventoryControl"
+             x:Class="InventoryControl.View.SelectedProductPage">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:QtyToColorConverter x:Key="MyColorConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+    <Label  Text="Product Detail"
+            TextColor="Teal"
+            FontAttributes="Bold"
+            FontSize="30"
+            HorizontalTextAlignment="Center"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"/>
+    <Label Text="Name:" 
+           TextColor="Silver"
+           FontAttributes="Bold"
+           FontSize="25"
+           HorizontalTextAlignment="Center"
+           Grid.Row="1" 
+           Grid.Column="0" />
+    <Label Text="{Binding Name}" 
+           TextColor="Gray"
+           FontAttributes="Bold"
+           FontSize="25"           
+           Grid.Row="1" 
+           Grid.Column="1" />
+    <Label Text="Brand:" 
+           TextColor="Silver"
+           FontAttributes="Bold"
+           FontSize="25"
+           HorizontalTextAlignment="Center"
+           Grid.Row="2" 
+           Grid.Column="0" />
+    <Label Text="{Binding Brand}" 
+           TextColor="Gray"
+           FontAttributes="Bold"
+           FontSize="25"            
+           Grid.Row="2" 
+           Grid.Column="1" />
+    <Label Text="Location:" 
+           TextColor="Silver"
+           FontAttributes="Bold"
+           FontSize="25"
+           HorizontalTextAlignment="Center"           
+           Grid.Row="3" 
+           Grid.Column="0" />
+    <Label Text="{Binding Location}" 
+           TextColor="Gray"
+           FontAttributes="Bold"
+           FontSize="25"            
+           Grid.Row="3" 
+           Grid.Column="1" />
+    <Label Text="Quantity:" 
+           TextColor="Silver"
+           FontAttributes="Bold"
+           FontSize="25"
+           HorizontalTextAlignment="Center"           
+           Grid.Row="4" 
+           Grid.Column="0" />
+    <Entry x:Name="entryQuantity"
+           Keyboard="Numeric"
+           Text="{Binding Qty}"
+           FontAttributes="Bold"
+           FontSize="25"
+           Grid.Row="4"
+           Grid.Column="1"
+           TextColor ="{Binding Qty, Mode=TwoWay, Converter={StaticResource MyColorConverter}}"/>
+    <Label Text="Area of use:" 
+           TextColor="Silver"
+           FontAttributes="Bold"
+           FontSize="25"
+           HorizontalTextAlignment="Center"           
+           Grid.Row="5" 
+           Grid.Column="0" />
+    <Label Text="{Binding UseArea}" 
+           TextColor="Gray"
+           FontAttributes="Bold"
+           FontSize="25"            
+           Grid.Row="5" 
+           Grid.Column="1" />
+  </Grid>
+</ContentPage>

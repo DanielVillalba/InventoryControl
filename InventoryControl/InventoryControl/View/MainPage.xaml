@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:InventoryControl"
+             x:Class="InventoryControl.MainPage"
+             x:Name="RootPage">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:QtyToColorConverter x:Key="MyColorConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <StackLayout BindingContext="{Binding Source={x:Reference RootPage}}">
+    <Button Text="Load Inventory (Sync to Azure)"
+            Command="{Binding LoadDirectoryCommand}"/>
+    <Button Text="Clear Local Inventory"
+            Command="{Binding DeleteDirectoryCommand}"/>
+    <Button Text="Add Local Inventory"
+        Command="{Binding GenerateProductsCommand}"/>
+    <ActivityIndicator IsRunning="{Binding IsBusy}"
+                       IsVisible="{Binding IsBusy}"/>
+    <ListView ItemsSource="{Binding Products}" 
+              x:Name="lvProducts"
+              CachingStrategy="RecycleElement">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Grid>
+              <Label Text="{Binding Name}" 
+                     HorizontalTextAlignment="Center"
+                     FontAttributes="Bold" 
+                     TextColor="{Binding Qty, Converter={StaticResource MyColorConverter}}" />
+              <Label Grid.Column="1" 
+                     Text="{Binding Brand}" 
+                     HorizontalTextAlignment="Center"
+                     TextColor="{Binding Qty, Converter={StaticResource MyColorConverter}}"/>
+              <Label Grid.Column="2" 
+                     Text="{Binding Location}"
+                     HorizontalTextAlignment="Center"
+                     TextColor="{Binding Qty, Converter={StaticResource MyColorConverter}}"/>
+              <Label Grid.Column="3" 
+                     Text="{Binding Qty}" 
+                     HorizontalTextAlignment="Center"
+                     TextColor="{Binding Qty, Converter={StaticResource MyColorConverter}}"/>
+            </Grid>
+          </ViewCell>
+          
+        </DataTemplate>
+      </ListView.ItemTemplate>
+      
+    </ListView>
+    
+    
+
+  </StackLayout>
+
+</ContentPage>

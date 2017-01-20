@@ -15,7 +15,7 @@ namespace InventoryControl
         private IMobileServiceClient _client;
         private IMobileServiceSyncTable<Product> _table;
         const string dbPath = "Inventory";
-        const string AzureAccessURL = "http://midemoxamarintiempo.azurewebsites.net";
+        const string AzureAccessURL = "http://mypushnotifications.azurewebsites.net";
 
         public AzureClient()
         {

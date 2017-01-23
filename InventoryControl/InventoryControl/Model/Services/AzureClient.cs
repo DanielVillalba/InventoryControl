@@ -12,6 +12,9 @@ namespace InventoryControl
 {
     public class AzureClient
     {
+        //GCM
+        public MobileServiceClient MobileService { get; set; }
+
         private IMobileServiceClient _client;
         private IMobileServiceSyncTable<Product> _table;
         const string dbPath = "Inventory";
@@ -20,6 +23,10 @@ namespace InventoryControl
         public AzureClient()
         {
             _client = new MobileServiceClient(AzureAccessURL);
+
+            //GCM
+            MobileService = _client as MobileServiceClient;
+
             var store = new MobileServiceSQLiteStore(dbPath);
             store.DefineTable<Product>();
             _client.SyncContext.InitializeAsync(store);

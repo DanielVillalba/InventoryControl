@@ -9,6 +9,10 @@ namespace InventoryControl
 {
     public partial class App : Application
     {
+
+        // GCM
+        public static AzureClient AzureService = new AzureClient();
+
         //private View.ProductsPage _productsPage;      // download data from azure
         public App()
         {
